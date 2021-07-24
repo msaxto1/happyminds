@@ -1,0 +1,10 @@
+/* Importing framework for Bulma */
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+.App {
+  text-align: center;
+}
+
+.HomeTitle {
+  font-size: 36px;
+}
