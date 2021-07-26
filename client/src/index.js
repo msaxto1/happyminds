@@ -7,13 +7,14 @@ import Forums from './Forums';
 import Help from './Help';
 import Register from './Register';
 import Login from './Login';
+import Preferences from './Preferences';
 import reportWebVitals from './reportWebVitals';
 import Nav from './templates/Nav';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -39,6 +40,9 @@ ReactDOM.render(
           </Route>
           <Route exact path="/register">
             <Register />
+          </Route>
+          <Route exact path="/preferences">
+            <Preferences />
           </Route>
         </Switch>
 

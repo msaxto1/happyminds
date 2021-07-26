@@ -1,29 +1,53 @@
+import {Component} from 'react';
 import axios from 'axios';
 
+class Resources extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      services: []
+    }
+  }
 
-function Resources() {
-  // var clinics = axios.get('https://pastebin.com/raw/fxQsGe6j')
-  //   .then(function(res) {
-  //     console.log(res.data);
-  //     var clinicData = 
-  //       [res.data].map((clinic) => {
-  //         return(
-            
-  //         <p>{clinic.title} {clinic.description}</p>
-  //       );
-  //     });
+  componentDidMount() {
+    this.renderServices();
+  }
 
-  // }).catch(function(err) {
-  //   console.log(err)
-  // });
-  // console.log(clinics)
-  // return clinics.data[0].title;
+  renderServices = async() => {
+    try {
+      const res = await axios.get('https://api.mattsaxton.me/services');
+      const services = res.data;
+  
+      this.setState({
+        services: services
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+  render() {
+    console.log("this.state", this.state);
 
-  return (
-  <h1>resources</h1>
-  );
+    
 
+    return (
+        <ul className="services">
+          {this.state.services.map((service, i) => (
+            <li key={i}>
+             <h1>
+              {service.Title}
+             </h1>
+             <p>
+               {service.Description}
+             </p>
+             <p>{service.Number}</p>
+            </li>
+          ))}
+        </ul>
+    );
+  }
 
 }
 

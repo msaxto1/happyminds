@@ -43,25 +43,7 @@ const Nav = () => (
                 </a>
 
 
-                <div className="navbar-item has-dropdown is-hoverable">
-                    <a className="navbar-link">
-                        More
-                    </a>
-
-                    <div className="navbar-dropdown">
-                        <a className="navbar-item">
-                            <Link to='/login' >
-                                About
-                            </Link>
-                        </a>
-                        <hr className="navbar-divider"/>
-                        <a className="navbar-item">
-                            <Link to='/login' >
-                                Report an Issue
-                            </Link>
-                        </a>
-                    </div>
-                </div>
+                
             </div>
 
             <div className="navbar-end">

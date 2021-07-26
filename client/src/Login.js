@@ -11,13 +11,15 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 
+// Login Template from material-ui package
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="/">
         Happy Minds
       </Link>{' '}
       {new Date().getFullYear()}
@@ -55,6 +57,14 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
+const handleEmailChange = (e) => {
+  this.setState({email: e.target.value});
+}
+
+const handlePasswordChange = (e) => {
+  this.setState({password: e.target.value});
+}
 
 export default function SignInSide() {
   const classes = useStyles();
@@ -113,7 +123,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

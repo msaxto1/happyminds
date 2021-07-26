@@ -8,3 +8,7 @@
 .HomeTitle {
   font-size: 36px;
 }
+
+.services li {
+  margin-bottom: 50px;
+}
