@@ -13,13 +13,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-
 class Register extends Component {
   constructor() {
     super();
     this.state = {
       email: null,
-      password: null
+      password: null,
+      loggedIn: false
     }
   }
   // Register Template from material-ui package
@@ -34,8 +34,9 @@ class Register extends Component {
   registerUser = (e) => {
     e.preventDefault();
     axios
-      .post('http://api.mattsaxton.me/auth/local/register', {
+      .post('https://api.mattsaxton.me/auth/local/register', {
         email: this.state.email,
+        username: this.state.email,
         password: this.state.password,
       })
       .then(response => {
@@ -43,7 +44,10 @@ class Register extends Component {
         console.log('User created!');
         console.log('User profile', response.data.user);
         console.log('User token', response.data.jwt);
-        <Redirect to="/preferences" /> 
+        this.setState({
+          ...this.state,
+          loggedIn: true
+        });
       })
       .catch(error => {
         // Handle error.
@@ -51,7 +55,7 @@ class Register extends Component {
       });
   }
   
-  render() {
+  render() {   
     const classes = makeStyles((theme) => ({
       paper: {
         marginTop: theme.spacing(8),
@@ -71,6 +75,11 @@ class Register extends Component {
         margin: theme.spacing(3, 0, 2),
       },
     }));
+
+    
+    if (!this.state.loggedIn) {
+      return <Redirect to='/preferences'/>;
+    }
 
     return (
       <Container component="main" maxWidth="xs">
@@ -136,6 +145,7 @@ class Register extends Component {
             </Grid>
           </form>
         </div>
+
       </Container>
     );
   }
